@@ -243,8 +243,7 @@ button:focus {
 /* --------- */
 
 .home-header {
-  padding-top: 80px !important;
-  padding-bottom: 0% !important;
+  margin-top: 40px !important;
 }
 
 .home-section {
@@ -252,7 +251,7 @@ button:focus {
   z-index: -1;
   background-position: center;
   background-image: var(--image-gradient), url(./Assets/home-bg.jpg);  background-color: #64998D;  background-position: top center;
-  background-repeat: repeat;
+  background-repeat: repeat !important;
   background-size: cover;
   padding-bottom: 30px !important;
   padding-top: 30px !important;
@@ -265,9 +264,33 @@ button:focus {
   text-align: left;
 }
 
+.content-container {
+  margin-right: 10px;
+}
+
+/* For screens with a maximum width of 768px (e.g., mobile phones) */
+@media screen and (max-width: 768px) {
+  .content-container {
+    margin-left: 70px !important;
+  }
+}
+
+@media screen and (max-width: 280px) {
+  .content-container {
+    margin-left: 20px !important;
+  }
+}
+/* For screens with a minimum width of 769px (e.g., tablets and desktops) */
+@media screen and (min-width: 769px) {
+  .content-container {
+    margin-left: 250px !important;
+  }
+}
+
+
+
 .heading {
   font-size: 3.4em !important;
-  padding-left: 200px !important;
 }
 
 .heading-name {
@@ -301,15 +324,11 @@ button:focus {
   }
 }
 
-.myAvtar {
-  justify-content: center !important;
-  padding-top: 9em !important;
-}
-
 @media (max-width: 767px) {
-  .myAvtar {
+  .myimage {
     padding-top: 2em !important;
-    padding-bottom: 2em !important;
+    position: static ;
+    padding-bottom: 1em !important;
   }
 }
 
@@ -445,6 +464,7 @@ button:focus {
   padding-top: 150px !important;
   padding-bottom: 30px !important;
   background-image: var(--image-gradient), url(./Assets/home-bg.jpg);  background-color: #64998D;  background-position: top center;
+  background-repeat: repeat;
 }
 
 .project-card {
@@ -543,6 +563,8 @@ button:focus {
   padding-top: 150px !important;
   padding-bottom: 30px !important;
   background-image: var(--image-gradient), url(./Assets/home-bg.jpg);  background-color: #64998D;  background-position: top center;
+  background-repeat: repeat;
+
   color: white !important;
 }
 
@@ -603,6 +625,7 @@ button:focus {
   padding-top: 110px !important;
   padding-bottom: 30px !important;
   background-image: var(--image-gradient), url(./Assets/home-bg.jpg);  background-color: #64998D;  background-position: top center;
+  background-repeat: repeat;
   color: white !important;
 }
 
