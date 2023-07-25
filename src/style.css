@@ -215,11 +215,7 @@ button:focus {
   text-decoration: underline;
 }
 
-/* neonGlow.css */
 .read-more {
-  font-size: 20.5px;
-  height: 70px;
-  width: 214px;
   padding: 20px 40px;
   background-color: transparent;
   border: 2px solid #126654; /* Green neonish border */
@@ -230,12 +226,38 @@ button:focus {
   transition: all 0.2s ease-in-out;
 }
 
+@media screen and (max-width: 768px) {
+  .read-more {
+    font-size: 15.5px;
+    width: 200px;
+    height: 65px;
+  }
+}
+
+@media screen and (max-width: 280px) {
+  .read-more {
+    font-size: 10px;
+    width: 190px;
+    height: 60px;
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .read-more {
+    font-size: 20.5px;
+    width: 214px;
+    height: 70px;
+
+  }
+}
+
 .read-more:hover {
   background-color: #2ba3a34d; /* Slightly transparent green on hover */
   color: #fff; /* White text color on hover */
   border: 2px solid #15c0a9; /* Keep the green neonish border on hover */
   transform: scale(1.1); /* Slightly increase size on hover */
 }
+
 
 
 /* --------- */
