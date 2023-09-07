@@ -19,17 +19,17 @@ This is the README file for my personal portfolio website hosted at [salehamuzam
 
 ### Desktop View
 
-1. ![Desktop View 1](https://github.com/saleha-muzammil/portfolio/screenshots/i1.png)
-2. ![Desktop View 2](https://github.com/saleha-muzammil/portfolio/screenshots/i2.png)
-3. ![Desktop View 3](https://github.com/saleha-muzammil/portfolio/screenshots/i3.png)
-4. ![Desktop View 4](https://github.com/saleha-muzammil/portfolio/screenshots/i4.png)
-5. ![Desktop View 5](https://github.com/saleha-muzammil/portfolio/screenshots/i5.png)
+1. ![Desktop View 1](https://github.com/saleha-muzammil/portfolio/screenshots/im1.png)
+2. ![Desktop View 2](https://github.com/saleha-muzammil/portfolio/screenshots/im2.png)
+3. ![Desktop View 3](https://github.com/saleha-muzammil/portfolio/screenshots/im3.png)
+4. ![Desktop View 4](https://github.com/saleha-muzammil/portfolio/screenshots/im4.png)
+5. ![Desktop View 5](https://github.com/saleha-muzammil/portfolio/screenshots/im5.png)
 
 ### Mobile View
 
-1. ![Mobile View 1](https://github.com/saleha-muzammil/portfolio/screenshots/i6.jpeg)
-2. ![Mobile View 2](https://github.com/saleha-muzammil/portfolio/screenshots/i7.jpeg)
-3. ![Mobile View 3](https://github.com/saleha-muzammil/portfolio/screenshots/i8.jpeg)
+1. ![Mobile View 1](https://github.com/saleha-muzammil/portfolio/screenshots/im6.jpeg)
+2. ![Mobile View 2](https://github.com/saleha-muzammil/portfolio/screenshots/im7.jpeg)
+3. ![Mobile View 3](https://github.com/saleha-muzammil/portfolio/screenshots/im8.jpeg)
 
 ## Getting Started
 
