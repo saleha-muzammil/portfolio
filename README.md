@@ -19,11 +19,10 @@ This is the README file for my personal portfolio website hosted at [salehamuzam
 
 ### Desktop View
 
-1. ![Desktop View 1](https://github.com/saleha-muzammil/portfolio/screenshots/im1.png)
-2. ![Desktop View 2](https://github.com/saleha-muzammil/portfolio/screenshots/im2.png)
-3. ![Desktop View 3](https://github.com/saleha-muzammil/portfolio/screenshots/im3.png)
-4. ![Desktop View 4](https://github.com/saleha-muzammil/portfolio/screenshots/im4.png)
-5. ![Desktop View 5](https://github.com/saleha-muzammil/portfolio/screenshots/im5.png)
+<img src="https://github.com/saleha-muzammil/portfolio/blob/main/screenshots/im2.png" width="300" height="300" />
+<img src="https://github.com/saleha-muzammil/portfolio/blob/main/screenshots/im3.png" width="300"  height="300"/>
+<img src="https://github.com/saleha-muzammil/portfolio/blob/main/screenshots/im4.png" width="300"  height="300"/>
+<img src="https://github.com/saleha-muzammil/portfolio/blob/main/screenshots/im5.png" width="300"  height="300" />
 
 ### Mobile View
 
