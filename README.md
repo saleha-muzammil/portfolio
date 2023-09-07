@@ -1,10 +1,10 @@
-# Personal Portfolio Website - salehamuzammil.com 🌟✨😊🚀💖
+# Personal Portfolio Website - [salehamuzammil.com](https://salehamuzammil.vercel.app/)
 
-![Personal Portfolio Website](https://www.salehamuzammil.com/screenshot.png)
+![Personal Portfolio Website](https://github.com/saleha-muzammil/portfolio/blob/main/screenshots/im1.png)
 
 ## Description
 
-This is the README file for my personal portfolio website hosted at [salehamuzammil.com](https://www.salehamuzammil.com). The website is built using ReactJS, HTML, CSS, and Bootstrap to create a responsive and visually appealing multi-page layout. The backend is powered by Node.js and Express.js, and the website is deployed on Vercel. The domain was purchased from GoDaddy.
+This is the README file for my personal portfolio website hosted at [salehamuzammil.com](https://salehamuzammil.vercel.app/). The website is built using ReactJS, HTML, CSS, and Bootstrap to create a responsive and visually appealing multi-page layout. The backend is powered by Node.js and Express.js, and the website is deployed on Vercel. The domain was purchased from GoDaddy.
 
 ## Features
 
@@ -18,17 +18,12 @@ This is the README file for my personal portfolio website hosted at [salehamuzam
 ## Screenshots
 
 ### Desktop View
-
-<img src="https://github.com/saleha-muzammil/portfolio/blob/main/screenshots/im2.png" width="300" height="300" />
-<img src="https://github.com/saleha-muzammil/portfolio/blob/main/screenshots/im3.png" width="300"  height="300"/>
-<img src="https://github.com/saleha-muzammil/portfolio/blob/main/screenshots/im4.png" width="300"  height="300"/>
-<img src="https://github.com/saleha-muzammil/portfolio/blob/main/screenshots/im5.png" width="300"  height="300" />
+<img src="https://github.com/saleha-muzammil/portfolio/blob/main/screenshots/im2.png" width="500" /> <img src="https://github.com/saleha-muzammil/portfolio/blob/main/screenshots/im3.png" width="500"  /> 
+<img src="https://github.com/saleha-muzammil/portfolio/blob/main/screenshots/im4.png" width="500" /> <img src="https://github.com/saleha-muzammil/portfolio/blob/main/screenshots/im5.png" width="500"  />
 
 ### Mobile View
 
-1. ![Mobile View 1](https://github.com/saleha-muzammil/portfolio/screenshots/im6.jpeg)
-2. ![Mobile View 2](https://github.com/saleha-muzammil/portfolio/screenshots/im7.jpeg)
-3. ![Mobile View 3](https://github.com/saleha-muzammil/portfolio/screenshots/im8.jpeg)
+<img src="https://github.com/saleha-muzammil/portfolio/blob/main/screenshots/im7.jpeg" width="300" /> <img src="https://github.com/saleha-muzammil/portfolio/blob/main/screenshots/im8.jpeg" width="300" />
 
 ## Getting Started
 
@@ -58,7 +53,7 @@ To run the website locally and make your own changes, follow these steps:
 
 ## Deployed Version
 
-The website is deployed and can be accessed at [salehamuzammil.com](https://www.salehamuzammil.com).
+The website is deployed and can be accessed at [salehamuzammil.com](https://salehamuzammil.vercel.app/).
 
 ## Contributions
 
@@ -66,6 +61,4 @@ Feel free to fork this repository and customize the website to create your own p
 
 ---
 
-Thank you for visiting my personal portfolio website. If you have any questions or would like to get in touch, please feel free to reach out to me through the contact information provided on the website.
-
-Happy coding! 🚀
+Please note that the link to [salehamuzammil.com](https://salehamuzammil.vercel.app/) has been updated to open in a new tab when clicked.
