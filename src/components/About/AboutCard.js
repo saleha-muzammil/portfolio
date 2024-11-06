@@ -9,8 +9,7 @@ function AboutCard() {
         <blockquote className="blockquote mb-0">
           <p style={{ textAlign: "justify" }}>
           I am based in <a href="https://www.google.com/maps?q=Lahore,Pakistan" target="_blank" rel="noopener noreferrer" className="teal-link">Lahore, Pakistan</a>.
-<br /> I am a Senior Year student, pursuing a Bachelor's in Computer Science from <a href="https://www.nu.edu.pk/" target="_blank" rel="noopener noreferrer" className="teal-link">FAST-NUCES</a>.
-<br /> My interests are centered around Machine Learning and its applications. With hands-on experience in working with ML models, I have served as a Research Assistant on projects related to NLP, ML, and Vision.
+<br /> I am a recent CS grad from <a href="https://www.nu.edu.pk/" target="_blank" rel="noopener noreferrer" className="teal-link">FAST-NUCES</a>.
 <br/> I am also an <a href="https://www.instagram.com/artbysaleha" target="_blank" rel="noopener noreferrer" className="teal-link">artist</a> with a love for Arabic calligraphy (Khat-e-Suls).
 <br/>
 <br/>
