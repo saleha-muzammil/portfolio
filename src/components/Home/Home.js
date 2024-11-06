@@ -5,7 +5,7 @@ import me from "../../Assets/me.png";
 import Type from "./Type";
 import { AiFillGithub, AiOutlineTwitter } from "react-icons/ai";
 import { FaLinkedinIn } from "react-icons/fa";
-import { RxOpenInNewWindow } from "react-icons/rx"; // Import the arrow icon from react-icons
+import { RxOpenInNewWindow } from "react-icons/rx";
 
 function Home() {
   return (
@@ -25,8 +25,8 @@ function Home() {
                 </div>
                 <div className="paragraph-container">
                   <p>
-                    A self-driven and determined individual with a passion for <span className="teal">Applied Machine Learning</span>.
-                    <br /> Committed to working on solving real-life challenges through ML to make the world a better place.
+                    A self-driven and determined individual with a passion for <span className="teal">software and systems</span>.
+                    <br /> Committed to working on solving real-life challenges to make the world a better place.
                   </p>
                 </div>
               <Col md={12}>
