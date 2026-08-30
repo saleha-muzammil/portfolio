@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="1" y2=".35">
+      <stop offset="0"   stop-color="#ffffff"/>
+      <stop offset=".18" stop-color="#dcecfd"/>
+      <stop offset=".42" stop-color="#93c4f5"/>
+      <stop offset=".72" stop-color="#4b95e8"/>
+      <stop offset="1"   stop-color="#1f6ecb"/>
+    </linearGradient>
+    <linearGradient id="blue" x1="0" y1="0" x2="1" y2=".4">
+      <stop offset="0"   stop-color="#a9d3f8"/>
+      <stop offset=".35" stop-color="#5ea6f0"/>
+      <stop offset="1"   stop-color="#1b6fd2"/>
+    </linearGradient>
+    <linearGradient id="yellow" x1=".05" y1="0" x2=".95" y2=".5">
+      <stop offset="0"   stop-color="#ffd447"/>
+      <stop offset=".45" stop-color="#ffb02e"/>
+      <stop offset="1"   stop-color="#ff9314"/>
+    </linearGradient>
+    <linearGradient id="orange" x1="0" y1="0" x2=".9" y2=".55">
+      <stop offset="0"   stop-color="#ff8f3c"/>
+      <stop offset=".5"  stop-color="#ff7a2f"/>
+      <stop offset="1"   stop-color="#ff9c1f"/>
+    </linearGradient>
+    <linearGradient id="red" x1="0" y1=".1" x2="1" y2=".7">
+      <stop offset="0"   stop-color="#f5405f"/>
+      <stop offset=".45" stop-color="#f65a44"/>
+      <stop offset="1"   stop-color="#ff8a34"/>
+    </linearGradient>
+    <linearGradient id="magenta" x1="0" y1="0" x2="1" y2=".8">
+      <stop offset="0"   stop-color="#c62a72"/>
+      <stop offset=".5"  stop-color="#e04a5c"/>
+      <stop offset="1"   stop-color="#f97a3d"/>
+    </linearGradient>
+    <linearGradient id="deep" x1=".05" y1="0" x2=".95" y2="1">
+      <stop offset="0"   stop-color="#2f2a63"/>
+      <stop offset=".45" stop-color="#43276b"/>
+      <stop offset="1"   stop-color="#7b2f6a"/>
+    </linearGradient>
+    <radialGradient id="glow" cx=".13" cy=".04" r=".5">
+      <stop offset="0"  stop-color="#ffffff" stop-opacity=".95"/>
+      <stop offset="1"  stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="leftshade" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0"   stop-color="#1a1440" stop-opacity=".38"/>
+      <stop offset=".35" stop-color="#1a1440" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#sky)"/>
+
+  <path d="M0 158 C 260 78 520 236 796 172 C 1046 114 1240 190 1600 112 L1600 900 L0 900 Z" fill="url(#blue)"/>
+  <path d="M0 236 C 214 190 436 306 662 268 C 918 224 1176 306 1600 242 L1600 900 L0 900 Z" fill="url(#yellow)"/>
+  <path d="M0 316 C 190 282 414 404 640 384 C 900 360 1140 436 1600 372 L1600 900 L0 900 Z" fill="url(#orange)"/>
+  <path d="M0 418 C 206 384 396 536 618 526 C 872 514 1178 578 1600 516 L1600 900 L0 900 Z" fill="url(#red)"/>
+  <path d="M0 546 C 232 522 442 664 704 664 C 982 664 1286 714 1600 672 L1600 900 L0 900 Z" fill="url(#magenta)"/>
+  <path d="M0 604 C 300 648 706 786 1108 836 C 1306 860 1452 874 1600 884 L1600 900 L0 900 Z" fill="url(#deep)"/>
+
+  <rect width="1600" height="900" fill="url(#glow)"/>
+  <rect width="1600" height="900" fill="url(#leftshade)"/>
+</svg>

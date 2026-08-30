@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Saleha's Desktop</title>
+<meta name="description" content="Saleha's personal website — a desktop you can poke around in.">
+<link rel="stylesheet" href="css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🖥️</text></svg>">
+</head>
+<body>
+
+<!-- ============ ICON SPRITE (macOS-style, hand-authored) ============ -->
+<svg class="sprite" aria-hidden="true" focusable="false">
+<defs>
+  <linearGradient id="g-folder-front" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#7FC8FA"/><stop offset="52%" stop-color="#4FAAF2"/><stop offset="100%" stop-color="#2E8CE4"/>
+  </linearGradient>
+  <linearGradient id="g-mail" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#1FBEFF"/><stop offset="55%" stop-color="#1093F5"/><stop offset="100%" stop-color="#0A5FE0"/>
+  </linearGradient>
+  <linearGradient id="g-env" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#FCFCFD"/><stop offset="100%" stop-color="#E6E6EA"/>
+  </linearGradient>
+  <linearGradient id="g-finder-l" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#1FC8FF"/><stop offset="52%" stop-color="#0E93FA"/><stop offset="100%" stop-color="#0B57F0"/>
+  </linearGradient>
+  <linearGradient id="g-finder-r" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#F4F4F6"/><stop offset="100%" stop-color="#D5D5DA"/>
+  </linearGradient>
+  <linearGradient id="g-safari" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#2ad3ff"/><stop offset="100%" stop-color="#0a6ee0"/>
+  </linearGradient>
+  <linearGradient id="g-notes" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#FFDC5E"/><stop offset="100%" stop-color="#F9C42B"/>
+  </linearGradient>
+  <linearGradient id="g-music" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#ff5f7e"/><stop offset="100%" stop-color="#e5205b"/>
+  </linearGradient>
+  <linearGradient id="g-term" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#4a4a4f"/><stop offset="100%" stop-color="#1c1c1e"/>
+  </linearGradient>
+  <linearGradient id="g-doc" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#ffffff"/><stop offset="100%" stop-color="#dfe3ea"/>
+  </linearGradient>
+  <linearGradient id="g-photos-plate" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#FBFBFB"/><stop offset="100%" stop-color="#E9E9EB"/>
+  </linearGradient>
+  <linearGradient id="g-gh" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#3a3a40"/><stop offset="100%" stop-color="#141417"/>
+  </linearGradient>
+</defs>
+
+<!-- Folder (macOS 14 / Sonoma) -->
+<symbol id="i-folder" viewBox="0 0 64 64">
+  <path d="M7 17.5A5.5 5.5 0 0 1 12.5 12h11.2a5.5 5.5 0 0 1 3.9 1.6l2.9 2.9H51a5.5 5.5 0 0 1 5.5 5.5v6H7z" fill="#93D2FB"/>
+  <path d="M3.5 26.5A4.5 4.5 0 0 1 8 22h48a4.5 4.5 0 0 1 4.5 4.5v20A5.5 5.5 0 0 1 55 52H9a5.5 5.5 0 0 1-5.5-5.5z" fill="url(#g-folder-front)"/>
+  <path d="M8 22h48a4.5 4.5 0 0 1 4.5 4.5v1.2A4.5 4.5 0 0 0 56 23.2H8a4.5 4.5 0 0 0-4.5 4.5v-1.2A4.5 4.5 0 0 1 8 22z" fill="#fff" opacity=".55"/>
+</symbol>
+
+<!-- Mail -->
+<symbol id="i-mail" viewBox="0 0 64 64">
+  <rect x="1" y="1" width="62" height="62" rx="14" fill="url(#g-mail)"/>
+  <rect x="6.5" y="15" width="51" height="34" rx="5.5" fill="url(#g-env)"/>
+  <path d="M8 17.6 L28.8 35.4 a4.8 4.8 0 0 0 6.4 0 L56 17.6" fill="none" stroke="#c6c6cc" stroke-width="1.7" stroke-linejoin="round"/>
+  <path d="M8 46.6 L24.4 33.2 M56 46.6 L39.6 33.2" fill="none" stroke="#d9d9df" stroke-width="1.5" stroke-linecap="round"/>
+</symbol>
+
+<!-- Finder -->
+<symbol id="i-finder" viewBox="0 0 64 64">
+  <rect x="1" y="1" width="62" height="62" rx="14" fill="url(#g-finder-r)"/>
+  <path d="M32 1 C29.6 11 27.4 22.6 27.1 32.2 c-.08 2.3.5 3.3 2.3 3.4 l4.6.2 c1 .05 1.4.6 1.42 1.7 L36 63 H15 A14 14 0 0 1 1 49 V15 A14 14 0 0 1 15 1 Z" fill="url(#g-finder-l)"/>
+  <rect x="18.1" y="19.4" width="3.1" height="9.2" rx="1.55" fill="#3d3d40"/>
+  <rect x="41.4" y="19.4" width="3.1" height="9.2" rx="1.55" fill="#3d3d40"/>
+  <path d="M15.4 40.4 C20 48.6 26 51.6 32 51.6 s12-3 16.6-11.2" fill="none" stroke="#3d3d40" stroke-width="3.1" stroke-linecap="round"/>
+</symbol>
+
+<!-- Safari -->
+<symbol id="i-safari" viewBox="0 0 64 64">
+  <rect x="1" y="1" width="62" height="62" rx="14" fill="url(#g-safari)"/>
+  <circle cx="32" cy="32" r="24" fill="#fff"/><circle cx="32" cy="32" r="21" fill="#f2f7fb"/>
+  <path d="m44 20-16.5 7.5L20 44l16.5-7.5z" fill="#ff4a4a"/>
+  <path d="m36.5 36.5 7.5-16.5-16.5 7.5z" fill="#e5e9ef"/>
+</symbol>
+
+<!-- Notes -->
+<symbol id="i-notes" viewBox="0 0 64 64">
+  <rect x="1" y="1" width="62" height="62" rx="14" fill="#F8F6F1"/>
+  <path d="M15 1h34a14 14 0 0 1 14 14v1.6H1V15A14 14 0 0 1 15 1z" fill="url(#g-notes)"/>
+  <g fill="#c2c2c6">
+    <circle cx="6.5" cy="20.4" r="1.15"/><circle cx="12.9" cy="20.4" r="1.15"/>
+    <circle cx="19.3" cy="20.4" r="1.15"/><circle cx="25.7" cy="20.4" r="1.15"/>
+    <circle cx="32"   cy="20.4" r="1.15"/><circle cx="38.3" cy="20.4" r="1.15"/>
+    <circle cx="44.7" cy="20.4" r="1.15"/><circle cx="51.1" cy="20.4" r="1.15"/>
+    <circle cx="57.5" cy="20.4" r="1.15"/>
+  </g>
+  <g stroke="#dedcd6" stroke-width="1.5">
+    <path d="M1 31.5h62M1 43h62M1 54.5h62"/>
+  </g>
+</symbol>
+
+<!-- Music -->
+<symbol id="i-music" viewBox="0 0 64 64">
+  <rect x="1" y="1" width="62" height="62" rx="14" fill="url(#g-music)"/>
+  <path d="M42 15v25.5a7 7 0 1 1-4-6.3V22l-14 3v20a7 7 0 1 1-4-6.3V21.5z" fill="#fff"/>
+</symbol>
+
+<!-- Photos -->
+<symbol id="i-photos" viewBox="0 0 64 64">
+  <rect x="1" y="1" width="62" height="62" rx="14" fill="url(#g-photos-plate)"/>
+  <g style="mix-blend-mode:multiply" opacity=".92">
+    <rect x="25.4" y="5.2" width="13.2" height="24.4" rx="6.6" fill="#FF9500"/>
+    <rect x="25.4" y="5.2" width="13.2" height="24.4" rx="6.6" fill="#FFD400" transform="rotate(45 32 32)"/>
+    <rect x="25.4" y="5.2" width="13.2" height="24.4" rx="6.6" fill="#8FD14F" transform="rotate(90 32 32)"/>
+    <rect x="25.4" y="5.2" width="13.2" height="24.4" rx="6.6" fill="#34A853" transform="rotate(135 32 32)"/>
+    <rect x="25.4" y="5.2" width="13.2" height="24.4" rx="6.6" fill="#4A90E2" transform="rotate(180 32 32)"/>
+    <rect x="25.4" y="5.2" width="13.2" height="24.4" rx="6.6" fill="#9B59D0" transform="rotate(225 32 32)"/>
+    <rect x="25.4" y="5.2" width="13.2" height="24.4" rx="6.6" fill="#E8479B" transform="rotate(270 32 32)"/>
+    <rect x="25.4" y="5.2" width="13.2" height="24.4" rx="6.6" fill="#F0473F" transform="rotate(315 32 32)"/>
+  </g>
+</symbol>
+
+<!-- Document -->
+<symbol id="i-doc" viewBox="0 0 64 64">
+  <path d="M13 6h26l13 13v39a5 5 0 0 1-5 5H13a5 5 0 0 1-5-5V11a5 5 0 0 1 5-5z" fill="url(#g-doc)" stroke="#c3c9d4" stroke-width="1.2"/>
+  <path d="M39 6l13 13H41a2 2 0 0 1-2-2z" fill="#c9cfdb"/>
+  <g stroke="#9aa2b2" stroke-width="2.2" stroke-linecap="round"><path d="M17 30h26M17 38h26M17 46h16"/></g>
+</symbol>
+
+<!-- PDF -->
+<symbol id="i-pdf" viewBox="0 0 64 64">
+  <path d="M13 6h26l13 13v39a5 5 0 0 1-5 5H13a5 5 0 0 1-5-5V11a5 5 0 0 1 5-5z" fill="url(#g-doc)" stroke="#c3c9d4" stroke-width="1.2"/>
+  <path d="M39 6l13 13H41a2 2 0 0 1-2-2z" fill="#c9cfdb"/>
+  <rect x="8" y="34" width="34" height="16" rx="3.5" fill="#e5342b"/>
+  <text x="25" y="46" font-family="Inter,Helvetica,Arial" font-size="11" font-weight="700" fill="#fff" text-anchor="middle">PDF</text>
+</symbol>
+
+<!-- GitHub -->
+<symbol id="i-github" viewBox="0 0 64 64">
+  <rect x="1" y="1" width="62" height="62" rx="14" fill="url(#g-gh)"/>
+  <path d="M32 12c-9.9 0-18 8.1-18 18 0 8 5.1 14.7 12.3 17.1.9.2 1.2-.4 1.2-.9v-3c-5 1.1-6.1-2.4-6.1-2.4-.8-2.1-2-2.7-2-2.7-1.7-1.1.1-1.1.1-1.1 1.8.1 2.8 1.9 2.8 1.9 1.6 2.8 4.2 2 5.3 1.5.2-1.2.6-2 1.2-2.5-4-.4-8.2-2-8.2-8.9 0-2 .7-3.6 1.9-4.8-.2-.5-.8-2.3.2-4.8 0 0 1.5-.5 5 1.8a17 17 0 0 1 9 0c3.4-2.3 4.9-1.8 4.9-1.8 1 2.5.4 4.3.2 4.8 1.2 1.2 1.9 2.8 1.9 4.8 0 6.9-4.2 8.4-8.2 8.9.7.6 1.2 1.7 1.2 3.4v5c0 .5.3 1.1 1.2.9A18 18 0 0 0 50 30c0-9.9-8.1-18-18-18z" fill="#fff"/>
+</symbol>
+
+<!-- LinkedIn -->
+<symbol id="i-linkedin" viewBox="0 0 64 64">
+  <rect x="1" y="1" width="62" height="62" rx="14" fill="#0a66c2"/>
+  <circle cx="19.5" cy="19" r="4.4" fill="#fff"/>
+  <rect x="15.5" y="26" width="8" height="23" rx="1.5" fill="#fff"/>
+  <path d="M29 26h7.6v3.2c1.1-2 3.4-3.8 7-3.8 6 0 9.4 3.7 9.4 10.7V49h-8V37.2c0-3.3-1.2-5.4-4.1-5.4-2.3 0-3.6 1.5-4.2 3-.2.5-.2 1.3-.2 2.1V49h-7.5z" fill="#fff"/>
+</symbol>
+</svg>
+
+<!-- ============ MENU BAR ============ -->
+<header class="menubar" id="menubar">
+  <div class="mb-left">
+    <button class="mb-item mb-apple" data-menu="apple" aria-label="Apple menu">
+      <svg viewBox="0 0 16 16" width="15" height="15" fill="currentColor"><path d="M11.05 8.35c-.02-1.9 1.55-2.81 1.62-2.86-.88-1.29-2.26-1.47-2.75-1.49-1.17-.12-2.29.69-2.88.69-.6 0-1.51-.67-2.48-.65-1.27.02-2.45.74-3.11 1.88-1.33 2.3-.34 5.7.95 7.57.63.91 1.38 1.94 2.36 1.9.95-.04 1.31-.61 2.45-.61s1.47.61 2.47.59c1.02-.02 1.67-.93 2.29-1.85.72-1.06 1.02-2.09 1.04-2.14-.02-.01-2-.77-2.02-3.03zM9.2 2.85c.52-.64.88-1.52.78-2.4-.75.03-1.67.5-2.21 1.13-.48.56-.91 1.46-.79 2.32.84.07 1.69-.42 2.22-1.05z"/></svg>
+    </button>
+    <button class="mb-item mb-bold" data-menu="finder">Finder</button>
+    <button class="mb-item" data-menu="file">File</button>
+    <button class="mb-item" data-menu="edit">Edit</button>
+    <button class="mb-item" data-menu="view">View</button>
+    <button class="mb-item" data-menu="go">Go</button>
+    <button class="mb-item" data-menu="help">Help</button>
+  </div>
+  <div class="mb-right">
+    <button class="mb-item mb-icon" id="btn-search" title="Search" aria-label="Search">
+      <svg viewBox="0 0 16 16" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="7" cy="7" r="5"/><path d="m11 11 3.5 3.5" stroke-linecap="round"/></svg>
+    </button>
+    <span class="mb-item mb-clock" id="clock">—</span>
+  </div>
+  <!-- dropdown menus injected by JS -->
+  <div class="mb-dropdown" id="mb-dropdown" hidden></div>
+</header>
+
+<!-- ============ DESKTOP ============ -->
+<main class="desktop" id="desktop">
+  <div class="wallpaper" aria-hidden="true"></div>
+
+  <!-- Hovering About-Me block -->
+  <section class="about-widget" id="about-widget" aria-label="About Saleha">
+    <header class="aw-bar">
+      <div class="lights">
+        <button class="light red"    id="aw-close" aria-label="Close"></button>
+        <button class="light yellow" id="aw-min"   aria-label="Minimise"></button>
+        <button class="light green"  id="aw-zoom"  aria-label="Zoom"></button>
+      </div>
+    </header>
+    <div class="aw-inner">
+      <div class="aw-top">
+        <div class="aw-avatar" id="aw-avatar"></div>
+        <div class="aw-id">
+          <h1 class="aw-name" id="aw-name">Saleha</h1>
+          <p class="aw-role" id="aw-role"></p>
+        </div>
+      </div>
+      <div class="aw-bio" id="aw-bio"></div>
+    </div>
+  </section>
+
+  <!-- Desktop icons -->
+  <div class="icon-grid" id="icon-grid"></div>
+
+  <!-- Selection marquee -->
+  <div class="marquee" id="marquee" hidden></div>
+
+  <!-- Windows -->
+  <div class="windows" id="windows"></div>
+</main>
+
+<!-- ============ DOCK ============ -->
+<nav class="dock-wrap" aria-label="Dock">
+  <ul class="dock" id="dock"></ul>
+</nav>
+
+<!-- Spotlight search -->
+<div class="spotlight" id="spotlight" hidden>
+  <div class="sl-panel" role="dialog" aria-label="Search">
+    <div class="sl-field">
+      <svg viewBox="0 0 16 16" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true">
+        <circle cx="7" cy="7" r="5"/><path d="m11 11 4 4" stroke-linecap="round"/>
+      </svg>
+      <input id="sl-input" type="text" placeholder="Search this desktop" autocomplete="off" spellcheck="false">
+      <kbd class="sl-esc">esc</kbd>
+    </div>
+    <ul class="sl-results" id="sl-results"></ul>
+  </div>
+</div>
+
+<!-- Context menu -->
+<div class="ctx-menu" id="ctx-menu" hidden></div>
+
+<!-- Mobile hint -->
+<div class="rotate-hint" id="rotate-hint">
+  <p><strong>Heads up —</strong> this desktop is roomier on a bigger screen. Tap icons to open windows.</p>
+  <button id="rotate-dismiss">Got it</button>
+</div>
+
+<script src="js/config.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
