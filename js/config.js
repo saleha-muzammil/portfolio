@@ -175,20 +175,44 @@ const CONFIG = {
       thanks: "Posted. Thank you.",
 
       /* ---- WHERE THE NOTES GO ------------------------------------------ *
-       * "local"     works with zero setup, but notes stay in the visitor's
-       *             own browser and never reach you. Fine for trying it out.
-       * "formspree" notes are emailed to you. Easiest real option.
-       * "supabase"  notes are saved to a database and shown on the page for
-       *             everyone, like a real guestbook.
-       * See README.md for the two-minute setup for each.
+       * Leave this as "auto". It picks supabase as soon as you fill in the
+       * two keys below, and falls back to browser-only storage until then.
        * ------------------------------------------------------------------ */
-      backend: "local",
+      backend: "auto",
 
-      // backend: "formspree"  ->  paste your form endpoint here
+      /* SUPABASE SETUP — about three minutes, all free:
+       *
+       * 1. Make a project at supabase.com
+       * 2. SQL Editor -> New query -> paste this -> Run:
+       *
+       *      create table notes (
+       *        id   bigint generated always as identity primary key,
+       *        name text,
+       *        body text not null,
+       *        at   timestamptz default now()
+       *      );
+       *      alter table notes enable row level security;
+       *      create policy "public read"   on notes for select using (true);
+       *      create policy "public insert" on notes for insert with check (true);
+       *
+       * 3. Project Settings -> API -> copy "Project URL" and the "anon public" key
+       * 4. Paste them below. That's it — the site switches over on its own.
+       *
+       * The anon key is meant to be public; the policies above are what control
+       * access. Never paste the "service_role" key here.
+       */
+      supabase: {
+        url:     "https://gqgspxdwbtviomkundcl.supabase.co",   // <- your project, already filled in
+
+        // Settings -> API Keys -> copy the PUBLIC key ("anon public", or
+        // "publishable" in the newer UI). NOT the secret / service_role one.
+        anonKey: "sb_publishable_CJ-DE79y4aKah6KItSJzPA_IE1plT3a",
+        table:   "notes",
+      },
+
+      // Alternative: notes emailed to you instead of shown on the page.
+      // Fill this in (and clear the supabase keys) to use it.
       formspree: { endpoint: "" },
-
-      // backend: "supabase"  ->  paste your project URL and anon (public) key
-      supabase: { url: "", anonKey: "", table: "notes" },
 
       // Show the notes on the page? (supabase and local only; formspree emails them)
       showWall: true,

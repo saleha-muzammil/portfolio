@@ -415,13 +415,39 @@ function renderTodo (pane) {
 const guestbook = {
   cfg: () => CONFIG.notesApp.guestbook,
 
-  async list () {
+  // "auto" resolves to whichever backend actually has credentials filled in,
+  // so pasting the Supabase keys is the only step needed to switch over.
+  mode () {
     const g = guestbook.cfg();
-    if (g.backend === 'supabase') {
-      const { url, anonKey, table } = g.supabase;
-      const r = await fetch(`${url}/rest/v1/${table}?select=*&order=at.desc&limit=50`,
-        { headers: { apikey: anonKey, Authorization: `Bearer ${anonKey}` } });
-      if (!r.ok) throw new Error('Could not load notes (' + r.status + ')');
+    if (g.backend && g.backend !== 'auto') return g.backend;
+    const sb = g.supabase || {};
+    if (sb.url && sb.anonKey) return 'supabase';
+    if (g.formspree && g.formspree.endpoint) return 'formspree';
+    return 'local';
+  },
+
+  sb () {
+    const { url, anonKey, table } = guestbook.cfg().supabase;
+    const key = String(anonKey).trim();
+    const headers = { apikey: key };
+    // legacy anon keys are JWTs and want a Bearer header; the newer
+    // sb_publishable_* keys are not, and Supabase rejects them as bearer tokens
+    if (key.startsWith('eyJ')) headers.Authorization = `Bearer ${key}`;
+    return { base: String(url).trim().replace(/\/+$/, ''), table: table || 'notes', headers };
+  },
+
+  async list () {
+    if (guestbook.mode() === 'supabase') {
+      const { base, table, headers } = guestbook.sb();
+      let r;
+      try {
+        r = await fetch(`${base}/rest/v1/${table}?select=*&order=at.desc&limit=50`, { headers });
+      } catch { throw new Error("Couldn't reach the notes database."); }
+      if (r.status === 401 || r.status === 403)
+        throw new Error('The database rejected the key — check the anon key and the row-level security policies.');
+      if (r.status === 404)
+        throw new Error(`No table called "${table}" — run the SQL from js/config.js in the Supabase SQL editor.`);
+      if (!r.ok) throw new Error('Could not load notes (' + r.status + ').');
       return await r.json();
     }
     return store.get(GUEST_KEY, []);
@@ -429,7 +455,8 @@ const guestbook = {
 
   async add (note) {
     const g = guestbook.cfg();
-    if (g.backend === 'formspree') {
+    const mode = guestbook.mode();
+    if (mode === 'formspree') {
       const r = await fetch(g.formspree.endpoint, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
@@ -438,15 +465,19 @@ const guestbook = {
       if (!r.ok) throw new Error('Could not send (' + r.status + ')');
       return;
     }
-    if (g.backend === 'supabase') {
-      const { url, anonKey, table } = g.supabase;
-      const r = await fetch(`${url}/rest/v1/${table}`, {
-        method: 'POST',
-        headers: { apikey: anonKey, Authorization: `Bearer ${anonKey}`,
-                   'Content-Type': 'application/json', Prefer: 'return=minimal' },
-        body: JSON.stringify(note)
-      });
-      if (!r.ok) throw new Error('Could not save (' + r.status + ')');
+    if (mode === 'supabase') {
+      const { base, table, headers } = guestbook.sb();
+      let r;
+      try {
+        r = await fetch(`${base}/rest/v1/${table}`, {
+          method: 'POST',
+          headers: { ...headers, 'Content-Type': 'application/json', Prefer: 'return=minimal' },
+          body: JSON.stringify(note)
+        });
+      } catch { throw new Error("Couldn't reach the notes database."); }
+      if (r.status === 401 || r.status === 403)
+        throw new Error('The database refused the note — add the "public insert" policy from js/config.js.');
+      if (!r.ok) throw new Error('Could not save (' + r.status + ').');
       return;
     }
     const all = store.get(GUEST_KEY, []);
@@ -470,11 +501,13 @@ function renderGuestbook (pane) {
     `<div class="np-date">${esc(noteDate())}</div>
      <h2 class="np-title">${esc(g.title)}</h2>
      <p class="np-body">${esc(g.intro)}</p>
+     ${guestbook.mode() === 'local'
+        ? `<p class="np-warn">Heads up: this pad isn't connected to anything yet.
+             What you write is saved only in your own browser — Saleha won't receive it.</p>` : ''}
      <textarea class="gb-body" placeholder="Write your note here…" rows="3" maxlength="1000"></textarea>
      <p class="np-hint"><span class="gb-status" role="status"></span><span class="gb-tip">${esc(g.hint)}</span></p>
-     ${g.showWall && g.backend !== 'formspree' ? '<div class="np-wall" hidden></div>' : ''}
-     ${g.backend === 'local'
-        ? '<p class="np-fine">Saved in this browser only — not yet sent anywhere.</p>' : ''}`;
+     ${g.showWall && guestbook.mode() !== 'formspree' ? '<div class="np-wall" hidden></div>' : ''}
+`;
 
   const box    = $('.gb-body', pane);
   const status = $('.gb-status', pane);
