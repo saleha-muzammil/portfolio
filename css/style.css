@@ -230,6 +230,7 @@ button{ font:inherit; color:inherit; background:none; border:0; cursor:pointer; 
   display:flex; align-items:center; justify-content:center; gap:7px;
 }
 .win-title svg, .win-title .ico{ width:16px; height:16px; object-fit:contain; }
+.sheet-done{ display:none; }
 .win-body{ flex:1; overflow:auto; overscroll-behavior:contain; }
 .win-body::-webkit-scrollbar{ width:10px; height:10px; }
 .win-body::-webkit-scrollbar-thumb{ background:rgba(255,255,255,.24); border-radius:99px; border:3px solid transparent; background-clip:content-box; }
@@ -382,46 +383,128 @@ button{ font:inherit; color:inherit; background:none; border:0; cursor:pointer; 
 .rotate-hint p{ margin:0; line-height:1.45; }
 .rotate-hint button{ padding:6px 12px; border-radius:8px; background:var(--accent); color:#fff; font-weight:600; font-size:12.5px; }
 
-/* ============================ RESPONSIVE ============================ */
+/* ======================= iPHONE HOME SCREEN ======================= */
+.ios{ display:none; }
+
 @media (max-width: 860px){
+  /* the Mac chrome steps aside */
+  .menubar, .dock-wrap, .icon-grid, .ctx-menu{ display:none !important; }
+
+  .ios{
+    position:fixed; inset:0; z-index:300;
+    display:flex; flex-direction:column;
+    padding:0 0 max(6px, env(safe-area-inset-bottom));
+    color:#fff;
+  }
+
+  /* status bar */
+  .ios-status{
+    flex:0 0 auto; display:flex; align-items:center; justify-content:space-between;
+    padding:max(12px, env(safe-area-inset-top)) 26px 8px;
+    font-size:15px; font-weight:600; letter-spacing:.2px;
+    text-shadow:0 1px 3px rgba(0,0,0,.35);
+  }
+  .ios-sys{ display:flex; align-items:center; gap:5px; }
+
+  /* scrollable home area */
+  .ios-scroll{
+    flex:1; overflow-y:auto; -webkit-overflow-scrolling:touch;
+    padding:8px 20px 14px;
+  }
+  .ios-widget{ margin-bottom:22px; }
+
+  /* app grid */
+  .ios-grid ul{
+    list-style:none; margin:0; padding:0;
+    display:grid; grid-template-columns:repeat(4,1fr); gap:20px 12px;
+  }
+  .ios-app{
+    display:flex; flex-direction:column; align-items:center; gap:6px;
+    width:100%; padding:0; -webkit-tap-highlight-color:transparent;
+  }
+  .ios-app svg, .ios-app .ico{
+    width:60px; height:60px; border-radius:14px; object-fit:contain;
+    filter:drop-shadow(0 3px 8px rgba(0,0,0,.32));
+    transition:transform .13s var(--ease);
+  }
+  .ios-app:active svg, .ios-app:active .ico{ transform:scale(.9); }
+  .ios-lbl{
+    font-size:11.5px; line-height:1.25; color:#fff; text-align:center;
+    text-shadow:0 1px 3px rgba(0,0,0,.6);
+    max-width:74px; overflow:hidden; display:-webkit-box;
+    -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow-wrap:anywhere;
+  }
+
+  /* dock */
+  .ios-dock{
+    flex:0 0 auto; list-style:none;
+    margin:0 14px 6px; padding:12px 10px;
+    display:grid; grid-template-columns:repeat(4,1fr); gap:12px;
+    background:rgba(255,255,255,.17);
+    backdrop-filter:blur(26px) saturate(160%);
+    -webkit-backdrop-filter:blur(26px) saturate(160%);
+    border:.5px solid rgba(255,255,255,.22);
+    border-radius:26px;
+  }
+  .ios-dock .ios-lbl{ display:none; }
+  .ios-bar{
+    flex:0 0 auto; width:132px; height:5px; margin:4px auto 0;
+    border-radius:99px; background:rgba(255,255,255,.75);
+  }
+
+  /* the about card as a home-screen widget */
   .about-widget{
-    position:relative; left:auto; top:auto;
-    margin:calc(var(--mb-h) + 18px) auto 18px; width:min(486px,92vw); max-height:none;
-    animation:none; cursor:default;
+    position:static; width:auto; max-height:none; margin:0;
+    border-radius:20px; box-shadow:0 8px 26px rgba(0,0,0,.3);
+    cursor:default; transition:none;
   }
-  .about-widget.zoomed{ width:min(486px,92vw); }
-  .desktop{ overflow-y:auto; overflow-x:hidden; -webkit-overflow-scrolling:touch; }
-  .icon-grid{
-    position:relative; inset:auto; right:auto; bottom:auto;
-    display:grid; grid-template-columns:repeat(auto-fill,minmax(84px,1fr));
-    gap:6px; padding:0 14px calc(var(--dock-h) + 30px);
-    width:100%; max-width:min(520px,100%); margin:0 auto;
-  }
-  .d-icon{ width:auto; }
+  .about-widget:hover{ transform:none; }
+  .about-widget .aw-bar{ display:none; }
+  .about-widget .aw-inner{ padding:18px 18px 19px; }
+
+  /* windows become full-screen iOS sheets */
   .win{
-    left:0 !important; top:var(--mb-h) !important;
-    width:100% !important;
-    height:calc(100% - var(--mb-h) - var(--dock-h) - 16px) !important;
-    border-radius:0; min-width:0;
+    left:0 !important; top:0 !important;
+    width:100% !important; height:100% !important;
+    min-width:0; min-height:0; border:0; border-radius:0;
+    animation:sheetUp .3s var(--ease);
   }
+  @keyframes sheetUp{ from{ transform:translateY(100%); } }
+  .win.closing{ animation:sheetDown .22s var(--ease) forwards; }
+  @keyframes sheetDown{ to{ transform:translateY(100%); opacity:1; } }
+  .win.minimizing{ animation:sheetDown .22s var(--ease) forwards; }
+  .win.inactive{ box-shadow:var(--shadow-win); }
   .resize-handle{ display:none; }
-  .finder-side{ display:none; }
-  .prose,.about-hero{ padding-left:20px; padding-right:20px; }
-  .mb-left .mb-item:not(.mb-apple):not(.mb-bold){ display:none; }
-  .dock-wrap{ max-width:calc(100vw - 12px); }
-  .dock{ gap:9px; padding:7px 10px; overflow-x:auto; scrollbar-width:none; }
-  .dock::-webkit-scrollbar{ display:none; }
-  .dock-btn{ width:44px; height:44px; }
-  .dock-tip{ display:none; }
+
+  .titlebar{
+    height:auto; padding:max(10px, env(safe-area-inset-top)) 16px 11px;
+    cursor:default;
+  }
+  .titlebar .lights{ display:none; }
+  .win-title{ font-size:16px; }
+  .sheet-done{
+    display:block; order:3; flex:0 0 auto;
+    font-size:15.5px; font-weight:600; color:var(--accent);
+    padding:2px 2px 2px 12px;
+  }
+
+  /* roomier insides on a small screen */
+  .finder-side, .notes-side{ display:none; }
+  .finder-main{ padding:14px; }
+  .file-grid{ grid-template-columns:repeat(auto-fill,minmax(92px,1fr)); }
+  .prose, .about-hero{ padding-left:18px; padding-right:18px; }
+  .notes-main{ padding:16px 18px 30px; }
+  .mail-pane{ padding:26px 20px; }
+  .img-view{ padding:10px; }
+  .sl-panel{ width:94vw; }
 }
-@media (max-width: 560px){
-  .dock{ gap:7px; }
-  .dock-btn{ width:36px; height:36px; }
-  .dock li{ flex:0 0 auto; }
-  .fact{ grid-template-columns:1fr; gap:2px; }
-  .about-widget{ padding:16px 16px 15px; }
-  .prose{ padding:22px 18px 26px; }
+
+@media (max-width: 380px){
+  .ios-grid ul{ gap:16px 8px; }
+  .ios-app svg, .ios-app .ico{ width:54px; height:54px; }
+  .ios-dock{ margin:0 10px 6px; padding:10px 8px; }
 }
+
 @media (prefers-reduced-motion: reduce){
   *{ animation-duration:.001s !important; transition-duration:.05s !important; }
 }

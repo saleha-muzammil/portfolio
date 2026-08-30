@@ -105,8 +105,8 @@ const CONFIG = {
       files: [
         { name: "Educative.txt", kind: "doc",
           body: [
-            "I write programming articles and courses over on Educative.",
-            "You can read them here:",
+            "About 5 years ago I used to write programming articles on Educative.",
+            "They're still up if you want a look:",
           ],
           url: "https://www.educative.io/profile/view/6734745937641472" },
       ],

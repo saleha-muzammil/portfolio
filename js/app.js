@@ -66,14 +66,21 @@ function focusWin (el) {
 }
 
 function closeWin (el) {
+  if (el.dataset.closing) return;
+  el.dataset.closing = '1';
   el.classList.add('closing');
-  el.addEventListener('animationend', () => {
+  let done = false;
+  const finish = () => {
+    if (done) return;
+    done = true;
     openWins.delete(el.dataset.winId);
     el.remove();
     syncDockDots();
     const rest = $$('.win');
     if (rest.length) focusWin(rest[rest.length - 1]);
-  }, { once: true });
+  };
+  el.addEventListener('animationend', finish, { once: true });
+  setTimeout(finish, 400);          // fallback: never leave a window stuck open
 }
 
 /* Cascade placement so windows don't stack perfectly */
@@ -115,6 +122,7 @@ function open (opts) {
          <button class="light green"  aria-label="Zoom window"></button>
        </div>
        <div class="win-title">${opts.icon ? svg(opts.icon) : ''}<span>${esc(opts.title)}</span></div>
+       <button class="sheet-done">Done</button>
        <div class="lights" style="visibility:hidden"><span class="light"></span><span class="light"></span><span class="light"></span></div>
      </header>
      <div class="win-body">${opts.body}</div>
@@ -128,6 +136,7 @@ function open (opts) {
 
   /* traffic lights */
   $('.light.red', el).addEventListener('click', e => { e.stopPropagation(); closeWin(el); });
+  $('.sheet-done', el).addEventListener('click', e => { e.stopPropagation(); closeWin(el); });
   $('.light.yellow', el).addEventListener('click', e => {
     e.stopPropagation();
     el.classList.add('minimizing');
@@ -859,6 +868,69 @@ SL.input.addEventListener('keydown', e => {
   else if (e.key === 'Escape') { e.preventDefault(); slClose(); }
 });
 
+/* ===================== 11. IPHONE HOME SCREEN ===================== *
+ * Same content functions as the desktop — only the presentation differs.
+ * ------------------------------------------------------------------ */
+const PHONE = matchMedia('(max-width: 860px)');
+
+function phoneApps () {
+  return [
+    ...CONFIG.folders.map(f => ({ icon: 'folder', label: f.name, act: () => openFolder(f) })),
+    { icon: 'notes',  label: 'Notes',  act: () => openNotes('todo') },
+    { icon: 'photos', label: 'Photos', act: openPhotos },
+    ...(CONFIG.desktopFiles || []).map(f => ({
+      icon: iconForKind(f.kind), label: f.name.replace(/\.[a-z]+$/i, ''), act: () => openFile(f)
+    })),
+    { icon: 'linkedin', label: 'LinkedIn', href: CONFIG.links.linkedin },
+  ];
+}
+const phoneDock = () => [
+  { icon: 'mail',   label: 'Mail',   act: openEmail },
+  { icon: 'notes',  label: 'Notes',  act: () => openNotes('guest') },
+  { icon: 'photos', label: 'Photos', act: openPhotos },
+  { icon: 'github', label: 'GitHub', href: CONFIG.links.github },
+];
+
+function tile (it, i) {
+  return `<li><button class="ios-app" data-i="${i}">${svg(it.icon)}
+            <span class="ios-lbl">${esc(it.label)}</span></button></li>`;
+}
+function wire (root, items) {
+  $$('.ios-app', root).forEach(b => b.addEventListener('click', () => {
+    const it = items[+b.dataset.i];
+    it.href ? window.open(it.href, '_blank', 'noopener') : it.act();
+  }));
+}
+
+const widgetHome = $('#about-widget') && $('#about-widget').parentElement;
+
+/* the about card lives on the desktop, or inside the iOS home screen — never both */
+function placeWidget () {
+  const w = $('#about-widget'), slot = $('#ios-widget');
+  if (!w || !slot || !widgetHome) return;
+  const target = PHONE.matches ? slot : widgetHome;
+  if (w.parentElement !== target) target.appendChild(w);
+}
+
+function buildPhone () {
+  const apps = phoneApps(), dock = phoneDock();
+  const grid = $('#ios-grid'), dk = $('#ios-dock');
+  grid.innerHTML = '<ul>' + apps.map(tile).join('') + '</ul>';
+  dk.innerHTML = dock.map(tile).join('');
+  wire(grid, apps); wire(dk, dock);
+
+  placeWidget();
+  PHONE.addEventListener('change', placeWidget);
+
+  const tickIos = () => {
+    $('#ios-time').textContent = new Date()
+      .toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' })
+      .replace(/\s?[AP]M$/i, '');
+  };
+  tickIos();
+  setInterval(tickIos, 10000);
+}
+
 /* ===================== 10. BOOT ===================== */
 hydrateWidget();
 buildDesktopIcons();
@@ -880,12 +952,7 @@ function routeHash () {
 routeHash();
 addEventListener('hashchange', routeHash);
 
-/* first-visit hint on small screens */
-if (window.innerWidth <= 860) {
-  const hint = $('#rotate-hint');
-  hint.style.display = 'flex';
-  $('#rotate-dismiss').addEventListener('click', () => (hint.style.display = 'none'));
-}
+buildPhone();
 
 /* keep windows on-screen when the viewport shrinks */
 addEventListener('resize', () => {
