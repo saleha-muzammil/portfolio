@@ -222,6 +222,9 @@ const CONFIG = {
   /* ---------- 8. PHOTOS ------------------------------------------------- *
    * Drop images in assets/ and list them here. Leave empty to show a hint.  */
   photos: [
-    // { src: "assets/photo1.jpg", caption: "Somewhere good" },
+    { src: "assets/photos/saleha-rotunda.jpg",  caption: "On the Lawn, UVA" },
+    { src: "assets/photos/great-wave.jpg",      caption: "Hokusai — The Great Wave off Kanagawa" },
+    { src: "assets/photos/couplet-hunar.png",   caption: "Iqbal — “Learn from some master, this strange craft”" },
+    { src: "assets/photos/couplet-khait.png",   caption: "Iqbal — “The field whose harvest is no peasant’s daily bread”" },
   ],
 };
